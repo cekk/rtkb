@@ -1,0 +1,47 @@
+{
+  "connections": [
+    {
+      "port": 80,
+      "labels": ["web-ui"]
+    },
+    {
+      "port": 9000,
+      "labels": ["api"]
+    }
+  ],
+  "registrations": [
+    {
+      "plugin": {
+        "register": "inert",
+        "options": null
+      }
+    },
+    {
+      "plugin": {
+        "register": "vision",
+        "options": null
+      }
+    },
+    {
+      "plugin": {
+        "register": "hapi-swagger",
+        "options": {
+          "info": {
+            "title": "Test API Documentation",
+            "version": "1.0.0"
+          }
+        }
+      }
+    },
+    {
+      "plugin": {
+        "register": "./servers"
+      },
+      "options": {
+        "routes": {
+          "prefix": "/server"
+        }
+      }
+    }
+  ]
+}
