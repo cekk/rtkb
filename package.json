@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "start-dev": "nodemon app.js",
-    "dev": "cross-env NODE_ENV=development npm run start-dev"
+    "dev": "cross-env NODE_ENV=development npm run start-dev",
+    "test": "NODE_ENV=test DB_NAME=rtkbtest DB_PATH=localhost:27017 node node_modules/lab/bin/lab -v -C -D"
   },
   "author": "cekk",
   "license": "ISC",
@@ -22,7 +23,11 @@
     "vision": "^4.1.1"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "cross-env": "^3.1.4",
+    "lab": "^12.1.0",
+    "labbable": "^2.1.0",
+    "mocha": "^3.2.0",
     "nodemon": "^1.11.0"
   }
 }
