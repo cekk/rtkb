@@ -10,4 +10,6 @@ addons:
 node_js:
   - "node"
 services:
-  - mongodb
+  - postgresql
+before_script:
+  - psql -c 'create database test;' -U postgres
