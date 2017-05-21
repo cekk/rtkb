@@ -38,6 +38,16 @@
           "prefix": "/servers"
         }
       }
+    },
+    {
+      "plugin": {
+        "register": "./applications"
+      },
+      "options": {
+        "routes": {
+          "prefix": "/applications"
+        }
+      }
     }
   ]
 }
