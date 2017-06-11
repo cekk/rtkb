@@ -15,8 +15,16 @@ Glue.compose(manifest, options, function (err, server) {
   // Show the server to our instance of labbable
   labbable.using(server);
   server.start(function (err) {
-    for ( var key of Object.keys(server.connections) ) {
-      console.info( chalk.bold.green( '==> 🌎 Hapi Server (' + server.connections[key].labels + ') is listening on', server.connections[key].info.uri ));
+    if (process.env.NODE_ENV !== 'test') {
+      models.sequelize.sync()
+        .then(() => {
+          for ( var key of Object.keys(server.connections) ) {
+            console.info( chalk.bold.green( '==> 🌎 Hapi Server (' + server.connections[key].labels + ') is listening on', server.connections[key].info.uri ));
+          }
+        })
+        .catch((err) => {
+          console.trace(chalk.red(err));
+        });
     }
   });
 });
